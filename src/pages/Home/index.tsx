@@ -1,17 +1,21 @@
 import { Container } from './styles'
 
 export function Home() {
-  function handleSearchPets() {
-    // TO DO
-  }
+  // function handleSearchPets() {
+  //   // TO DO
+  // }
 
-  function handleChangeState() {
-    // TO DO
-  }
+  // function handleChangeState() {
+  //   // TO DO
+  // }
 
-  function handleChangeCity() {
-    // TO DO
-  }
+  // function handleChangeCity() {
+  //   // TO DO
+  // }
 
-  return <Container>{/* COMECE POR AQUI */}</Container>
+  return (
+    <Container>
+      <p>Test</p>
+    </Container>
+  )
 }
