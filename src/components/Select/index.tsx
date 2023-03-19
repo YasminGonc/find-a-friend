@@ -1,41 +1,56 @@
-import chevron from '@/assets/icons/chevron-bottom.svg'
-import { ComponentProps } from 'react'
-import {
-  Filter,
-  FilterLabel,
-  FilterInput,
-  FilterInputOption,
-  FilterWrapper,
-} from './styles'
+import { SelectHTMLAttributes, useState } from 'react'
+import * as S from './styles'
+import { CaretDown, CaretUp } from 'phosphor-react'
 
-type SelectProps = ComponentProps<typeof FilterInput> & {
+export type SelectProps = {
   label: string
   name: string
+  sideLabel: boolean
+  inputSize?: 'large' | 'medium'
   options: {
     value: string | number
     label: string
   }[]
-}
+} & SelectHTMLAttributes<HTMLSelectElement>
 
-export function Select({ label, name, options }: SelectProps) {
+export function Select({
+  label,
+  name,
+  options,
+  sideLabel = false,
+  inputSize = 'medium',
+}: SelectProps) {
+  const [isOpen, setIsOpen] = useState(false)
+
+  function handleOpenSelect() {
+    if (isOpen) {
+      setIsOpen(false)
+    } else {
+      setIsOpen(true)
+    }
+  }
+
   return (
-    <Filter>
-      <FilterLabel htmlFor={name}>{label}</FilterLabel>
-      <FilterWrapper>
-        <FilterInput name={name} id={name}>
-          <FilterInputOption value="" disabled selected>
+    <S.Wrapper>
+      <S.FilterLabel htmlFor={name}>{label}</S.FilterLabel>
+
+      <S.FilterWrapper onClick={handleOpenSelect}>
+        <S.FilterInput name={name} id={name} inputSize={inputSize}>
+          <S.FilterInputOption value="" disabled selected>
             Selecione
-          </FilterInputOption>
+          </S.FilterInputOption>
+
           {options.map((option) => {
             return (
-              <FilterInputOption key={option.value} value={option.value}>
+              <S.FilterInputOption key={option.value} value={option.value}>
                 {option.label}
-              </FilterInputOption>
+              </S.FilterInputOption>
             )
           })}
-        </FilterInput>
-        <img src={chevron} alt="" />
-      </FilterWrapper>
-    </Filter>
+        </S.FilterInput>
+
+        {isOpen ? <CaretUp weight="bold" /> : <CaretDown weight="bold" />}
+      </S.FilterWrapper>
+    </S.Wrapper>
   )
 }

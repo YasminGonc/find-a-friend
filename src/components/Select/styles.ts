@@ -1,50 +1,51 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { SelectProps } from '.'
 
-export const Filter = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 1.2rem;
 `
 
 export const FilterLabel = styled.label`
-  font-size: 12px;
-  line-height: 14px;
-  font-weight: 500;
+  ${({ theme }) => css`
+    color: ${theme.colors.white};
+    font-size: ${theme.font.sizes.small};
+    line-height: ${theme.font.lineHeight};
+  `}
 `
 
 export const FilterWrapper = styled.div`
-  position: relative;
+  ${({ theme }) => css`
+    position: relative;
 
-  & > img {
-    position: absolute;
-    right: 18px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
+    & > svg {
+      color: ${theme.colors.white};
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  `}
 `
 
-export const FilterInput = styled.select`
-  width: 100%;
-  height: 60px;
-  font-size: 16px;
-  line-height: 19.2px;
-  font-weight: 800;
-  color: #ffffff;
-  background-color: #f75f64;
-  border-radius: 15px;
-  border: none;
-  outline: none;
-  padding: 20px;
-  appearance: none;
-  position: relative;
+export const FilterInput = styled.select<Pick<SelectProps, 'inputSize'>>`
+  ${({ theme, inputSize }) => css`
+    width: 100%;
+    height: 60px;
 
-  &::before {
-    content: '⌄';
-    width: 12px;
-    height: 6px;
-    display: absolute;
-    color: #ffffff;
-  }
+    color: ${theme.colors.white};
+    font-size: ${theme.font.sizes[inputSize!]};
+    font-weight: ${theme.font.extraBold};
+    line-height: ${theme.font.lineHeight};
+
+    background-color: ${theme.colors.select};
+    border: none;
+    border-radius: ${theme.borderRadius};
+    outline: none;
+    padding: ${theme.spacings.medium};
+    appearance: none;
+  `}
 `
 
 export const FilterInputOption = styled.option`

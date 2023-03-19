@@ -9,6 +9,13 @@ export default {
     size: 'xlarge',
     weight: 'semiBold',
   },
+  decorators: [
+    (Story) => (
+      <div style={{ width: '40rem' }}>
+        <Story />
+      </div>
+    ),
+  ],
   parameters: {
     backgrounds: {
       default: 'friend-red',
