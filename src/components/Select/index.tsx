@@ -4,53 +4,59 @@ import { CaretDown, CaretUp } from 'phosphor-react'
 
 export type SelectProps = {
   label: string
-  name: string
-  sideLabel: boolean
-  inputSize?: 'large' | 'medium'
-  options: {
-    value: string | number
-    label: string
-  }[]
+  ariaLabel: string
+  sideLabel?: boolean
+  inputsize?: 'large' | 'medium'
+  options: string[]
 } & SelectHTMLAttributes<HTMLSelectElement>
 
 export function Select({
   label,
-  name,
-  options,
+  ariaLabel,
   sideLabel = false,
-  inputSize = 'medium',
+  inputsize = 'medium',
+  options,
 }: SelectProps) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [open, setOpen] = useState(false)
 
-  function handleOpenSelect() {
-    if (isOpen) {
-      setIsOpen(false)
+  function handleOpenChange() {
+    if (open) {
+      setOpen(false)
     } else {
-      setIsOpen(true)
+      setOpen(true)
     }
   }
 
+  function handleOnValueChange(value: string) {
+    console.log(value)
+  }
+
   return (
-    <S.Wrapper>
-      <S.FilterLabel htmlFor={name}>{label}</S.FilterLabel>
+    <S.Wrapper sideLabel={sideLabel}>
+      <S.FilterLabel>{label}</S.FilterLabel>
 
-      <S.FilterWrapper onClick={handleOpenSelect}>
-        <S.FilterInput name={name} id={name} inputSize={inputSize}>
-          <S.FilterInputOption value="" disabled selected>
-            Selecione
-          </S.FilterInputOption>
+      <S.SelectRoot
+        onOpenChange={handleOpenChange}
+        open={open}
+        onValueChange={handleOnValueChange}
+      >
+        <S.SelectTrigger aria-label={ariaLabel} inputsize={inputsize}>
+          <S.SelectValue placeholder="Selecione" />
+          <S.SelectIcon>{open ? <CaretUp /> : <CaretDown />}</S.SelectIcon>
+        </S.SelectTrigger>
 
-          {options.map((option) => {
-            return (
-              <S.FilterInputOption key={option.value} value={option.value}>
-                {option.label}
-              </S.FilterInputOption>
-            )
-          })}
-        </S.FilterInput>
-
-        {isOpen ? <CaretUp weight="bold" /> : <CaretDown weight="bold" />}
-      </S.FilterWrapper>
+        <S.SelectPortal>
+          <S.SelectContent>
+            <S.SelectViewport>
+              {options.map((option) => (
+                <S.SelectItem key={option} value={option}>
+                  <S.SelectText>{option}</S.SelectText>
+                </S.SelectItem>
+              ))}
+            </S.SelectViewport>
+          </S.SelectContent>
+        </S.SelectPortal>
+      </S.SelectRoot>
     </S.Wrapper>
   )
 }

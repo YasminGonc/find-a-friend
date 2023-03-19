@@ -1,18 +1,1 @@
-export default [
-  {
-    label: 'GO',
-    value: 'GO',
-  },
-  {
-    label: 'DF',
-    value: 'DF',
-  },
-  {
-    label: 'MT',
-    value: 'MT',
-  },
-  {
-    label: 'MG',
-    value: 'MG',
-  },
-]
+export default ['Filhote', 'Jovem', 'Adulto', 'Idoso']

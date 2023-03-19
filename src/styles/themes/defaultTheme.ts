@@ -8,6 +8,7 @@ export const defaultTheme = {
     bg: '#FDECED',
     rose: '#FBE1E2',
     white: '#FFFFFF',
+    lightBrown: '#CFB5BB',
   },
   font: {
     family: '"Nunito", sans-serif',
@@ -27,6 +28,7 @@ export const defaultTheme = {
   },
   borderRadius: '1.5rem',
   spacings: {
+    small: '1.2rem',
     medium: '2rem',
   },
 } as const

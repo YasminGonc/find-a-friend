@@ -7,17 +7,19 @@ export default {
   title: 'Select',
   component: Select,
   args: {
-    label: 'Busque',
-    name: 'Estado',
+    label: 'Idade',
+    ariaLabel: 'Selecione uma idade',
+    sideLabel: false,
     options,
-    inputSize: 'medium',
+    inputsize: 'medium',
   },
   argTypes: {
-    inputSize: {
+    inputsize: {
       control: {
         type: 'radio',
       },
     },
+    valueChange: { action: 'take value' },
   },
   decorators: [
     (Story) => (
