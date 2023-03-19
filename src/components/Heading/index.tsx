@@ -2,18 +2,9 @@ import * as S from './styles'
 
 export type HeadingProps = {
   children: string
-  size?: 'huge' | 'xlarge'
-  weight?: 'semiBold' | 'extraBold'
+  size?: 'normal' | 'huge'
 }
 
-export function Heading({
-  children,
-  size = 'xlarge',
-  weight = 'semiBold',
-}: HeadingProps) {
-  return (
-    <S.Wrapper size={size} weight={weight}>
-      {children}
-    </S.Wrapper>
-  )
+export function Heading({ children, size = 'normal' }: HeadingProps) {
+  return <S.Wrapper size={size}>{children}</S.Wrapper>
 }

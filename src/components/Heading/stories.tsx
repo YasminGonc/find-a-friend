@@ -6,8 +6,7 @@ export default {
   component: Heading,
   args: {
     children: 'Encontre o animal de estimação ideal para seu estilo de vida!',
-    size: 'xlarge',
-    weight: 'semiBold',
+    size: 'normal',
   },
   decorators: [
     (Story) => (

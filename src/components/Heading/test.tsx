@@ -20,11 +20,7 @@ describe('<Heading />', () => {
   })
 
   it('shoul render huge and extra bold heading', () => {
-    renderWithTheme(
-      <Heading size="huge" weight="extraBold">
-        Find a friend
-      </Heading>,
-    )
+    renderWithTheme(<Heading size="huge">Find a friend</Heading>)
 
     expect(
       screen.getByRole('heading', { name: /find a friend/i }),
