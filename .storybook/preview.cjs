@@ -16,7 +16,7 @@ export const parameters = {
     values: [
       {
         name: 'friend-red',
-        value: '#E44449'
+        value: '#F15156'
       },
       {
         name: 'friend-light',

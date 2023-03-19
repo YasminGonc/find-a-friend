@@ -30,5 +30,6 @@ export const defaultTheme = {
   spacings: {
     small: '1.2rem',
     medium: '2rem',
+    huge: '12rem',
   },
 } as const

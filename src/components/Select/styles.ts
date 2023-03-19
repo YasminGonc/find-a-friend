@@ -7,6 +7,12 @@ const wrapperMofifier = {
     flex-direction: row;
     align-items: center;
     gap: ${theme.spacings.medium};
+
+    ${SelectTrigger} {
+      svg {
+        margin-left: 1rem;
+      }
+    }
   `,
 }
 
@@ -108,13 +114,4 @@ export const FilterWrapper = styled.div`
       transform: translateY(-50%);
     }
   `}
-`
-
-export const FilterInputOption = styled.option`
-  font-family: 'Nunito';
-  font-size: 14px;
-  line-height: 16px;
-  font-weight: 500;
-  color: #ffffff;
-  padding: 5px 7px;
 `
