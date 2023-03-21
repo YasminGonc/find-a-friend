@@ -8,6 +8,7 @@ export type SelectProps = {
   sideLabel?: boolean
   inputsize?: 'large' | 'medium'
   options: string[]
+  onValueChange?: (value: string) => void
 } & SelectHTMLAttributes<HTMLSelectElement>
 
 export function Select({
@@ -16,6 +17,7 @@ export function Select({
   sideLabel = false,
   inputsize = 'medium',
   options,
+  onValueChange,
 }: SelectProps) {
   const [open, setOpen] = useState(false)
 
@@ -27,10 +29,6 @@ export function Select({
     }
   }
 
-  function handleOnValueChange(value: string) {
-    console.log(value)
-  }
-
   return (
     <S.Wrapper sideLabel={sideLabel}>
       <S.FilterLabel>{label}</S.FilterLabel>
@@ -38,7 +36,7 @@ export function Select({
       <S.SelectRoot
         onOpenChange={handleOpenChange}
         open={open}
-        onValueChange={handleOnValueChange}
+        onValueChange={onValueChange}
       >
         <S.SelectTrigger aria-label={ariaLabel} inputsize={inputsize}>
           <S.SelectValue placeholder="Selecione" />

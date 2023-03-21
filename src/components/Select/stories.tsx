@@ -19,7 +19,7 @@ export default {
         type: 'radio',
       },
     },
-    valueChange: { action: 'take value' },
+    onValueChange: { action: 'change value' },
   },
   decorators: [
     (Story) => (
