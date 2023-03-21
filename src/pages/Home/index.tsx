@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import * as S from './styles'
 import { MagnifyingGlass } from 'phosphor-react'
 
@@ -8,8 +9,7 @@ import { Heading } from '@/components/Heading'
 import { Select } from '@/components/Select'
 import { TextField } from '@/components/TextField'
 import { Button } from '@/components/Button'
-
-const options = ['GO', 'MT', 'MS']
+import { locationContext } from '@/context/locationContext'
 
 export function Home() {
   // function handleSearchPets() {
@@ -17,12 +17,14 @@ export function Home() {
   // }
 
   // function handleChangeState() {
-  //   // TO DO
+  //   // done
   // }
 
   // function handleChangeCity() {
   //   // TO DO
   // }
+
+  const { handleChangeState, states } = useContext(locationContext)
 
   return (
     <S.Wrapper>
@@ -46,8 +48,9 @@ export function Home() {
           <Select
             label="Busque um amigo:"
             ariaLabel="Selecione o Estado"
-            options={options}
+            options={states}
             sideLabel
+            onValueChange={handleChangeState}
           />
           <TextField />
           <Button icon={<MagnifyingGlass weight="bold" />} />
